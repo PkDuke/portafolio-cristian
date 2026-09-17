@@ -135,251 +135,253 @@
         <p class="section-subtitle">Sistemas construidos para producción, probados bajo condiciones extremas de carga visual y renderizado.</p>
       </div>
 
-      <div class="projects-grid">
+      <div class="showcase-container">
         <!-- PROYECTO 1: AFORO -->
-        <article class="project-card spotlight-card">
-          <div class="project-top">
-            <div class="project-slider" data-interval="4500">
-              <div class="slider-track">
-                <div class="slider-slide active">
-                  <img src="assets/aforo-cad-full-venue-ui.jpg" alt="AFORO — Editor CAD 3D y Plano General de Planta" class="slider-img zoomable-image" loading="lazy" />
-                  <span class="slide-caption-badge">Editor CAD 3D &bull; Planta General</span>
-                </div>
-                <div class="slider-slide">
-                  <img src="assets/aforo-luxury-showcase.jpg" alt="AFORO — Simulación de Iluminación 3D de Alta Fidelidad" class="slider-img zoomable-image" loading="lazy" />
-                  <span class="slide-caption-badge">Simulación 3D de Alta Fidelidad</span>
+        <article class="showcase-card spotlight-card">
+          <div class="showcase-info">
+            <div class="showcase-header">
+              <span class="showcase-category">CAD 3D &amp; SIMULACIÓN ESPACIAL</span>
+              <span class="showcase-lead">Lead: Cristian Villota</span>
+            </div>
+
+            <h3 class="showcase-title">
+              AFORO &bull; Simulador &amp; CAD 3D de Eventos en Tiempo Real
+            </h3>
+
+            <p class="showcase-desc">
+              Plataforma interactiva para la estructuración y cálculo de aforo en recintos feriales. Permite manipular geometrías procedurales e instanciadas con dotación de sillas automáticas y validación perimetral instantánea.
+            </p>
+
+            <div class="showcase-specs">
+              <div class="spec-row">
+                <span class="spec-check">✓</span>
+                <div class="spec-text">
+                  <span class="spec-label">145.5 FPS sostenidos:</span> Manejo fluido de más de 1.000 objetos simultáneos mediante <code class="spec-code">InstancedMesh</code> multimaterial.
                 </div>
               </div>
+              <div class="spec-row">
+                <span class="spec-check">✓</span>
+                <div class="spec-text">
+                  <span class="spec-label">Green Computing:</span> Arquitectura de render bajo demanda con 0 FPS y 0 Watts en GPU en reposo.
+                </div>
+              </div>
+              <div class="spec-row">
+                <span class="spec-check">✓</span>
+                <div class="spec-text">
+                  <span class="spec-label">Catálogo Canónico:</span> 902 artículos normalizados y 241 modelos GLB validados con SHA-256.
+                </div>
+              </div>
+              <div class="spec-row">
+                <span class="spec-check">✓</span>
+                <div class="spec-text">
+                  <span class="spec-label">Ingeniería Rigurosa:</span> 68 tests automatizados y 2.944 aserciones matemáticas.
+                </div>
+              </div>
+            </div>
 
-              <button class="slider-arrow prev" aria-label="Imagen anterior">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-              </button>
-              <button class="slider-arrow next" aria-label="Siguiente imagen">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </button>
+            <div class="showcase-badges">
+              <span class="showcase-badge">Three.js 0.174</span>
+              <span class="showcase-badge">WebGPU / R3F</span>
+              <span class="showcase-badge">React 19</span>
+              <span class="showcase-badge">Next.js 15</span>
+              <span class="showcase-badge">Bun &amp; Turbo</span>
+              <span class="showcase-badge">Zustand</span>
+            </div>
 
-              <div class="slider-dots"></div>
+            <div class="showcase-actions">
+              <a href="https://aforo-web-azure.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-demo-glow">
+                🎮 Ver Demo en Vivo
+              </a>
+              <a href="https://github.com/PkDuke/aforo" target="_blank" rel="noopener noreferrer" class="btn-github-subtle">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
 
+          <div class="showcase-gallery">
+            <div class="gallery-main-wrap">
+              <img src="assets/01-aforo-banner-principal.jpg" alt="AFORO — Precise 3D Spatial Planning for Luxury Events" class="gallery-main-img zoomable-image" loading="lazy" />
               <div class="zoom-overlay-hint">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
                 Click para ampliar
               </div>
             </div>
 
-            <div class="project-header-row">
-              <span class="project-status-badge status-alpha">
-                🟡 En Construcción Activa &bull; Alpha Operativa
-              </span>
-              <h3 class="project-name">
-                AFORO — Motor CAD 3D de Planificación Espacial
-                <a href="https://aforo-web-azure.vercel.app/" target="_blank" rel="noopener noreferrer" title="Abrir demo de AFORO">
-                  <svg class="ext-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                  </svg>
-                </a>
-              </h3>
-            </div>
-
-            <p class="project-desc">
-              Editor 2D/3D profesional en el navegador para diseño técnico y montaje de eventos en recintos de gran escala. Construido sobre Pascal Editor Core, resuelve la concurrencia espacial con precisión milimétrica.
-            </p>
-
-            <div class="project-highlights">
-              <div class="highlight-item">
-                <strong>Reto:</strong> Mantener fluidez gráfica con miles de elementos sin agotar batería en portátiles.
+            <div class="gallery-sub-grid">
+              <div class="gallery-sub-wrap">
+                <img src="assets/aforo-cad-full-venue-ui.jpg" alt="AFORO — Editor CAD 3D Vista General" class="gallery-sub-img zoomable-image" loading="lazy" />
               </div>
-              <div class="highlight-item">
-                <strong>Solución:</strong> Pipeline de renderizado bajo demanda (0 FPS en reposo) y GPU Instancing a 145.5 FPS constantes.
-              </div>
-              <div class="highlight-item">
-                <strong>Ingeniería:</strong> Catálogo paramétrico de 902 piezas, 68 tests y 2.944 aserciones verificadas.
+              <div class="gallery-sub-wrap">
+                <img src="assets/media_1789667573682.png" alt="AFORO — Montaje de Pista y Mesas Banquete" class="gallery-sub-img zoomable-image" loading="lazy" />
               </div>
             </div>
-
-            <div class="project-actions">
-              <a href="https://aforo-web-azure.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-btn primary">
-                ▶ Demo en Vivo (Alpha)
-              </a>
-              <a href="https://github.com/PkDuke/aforo" target="_blank" rel="noopener noreferrer" class="project-btn">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                Repositorio
-              </a>
-            </div>
-          </div>
-
-          <div class="project-badges">
-            <span class="project-badge badge-warning">🚧 Alpha Activa</span>
-            <span class="project-badge badge-accent">Three.js</span>
-            <span class="project-badge badge-accent">WebGPU</span>
-            <span class="project-badge badge-info">145.5 FPS</span>
-            <span class="project-badge badge-info">0 FPS Idle</span>
-            <span class="project-badge badge-secondary">Next.js 15</span>
-            <span class="project-badge badge-secondary">Turborepo</span>
-            <span class="project-badge badge-secondary">Bun</span>
           </div>
         </article>
 
         <!-- PROYECTO 2: KNOWLEDGE UNIVERSE -->
-        <article class="project-card spotlight-card">
-          <div class="project-top">
-            <div class="project-slider" data-interval="4800">
-              <div class="slider-track">
-                <div class="slider-slide active">
-                  <img src="assets/knowledge-universe-cosmic-ui.png" alt="Knowledge Universe — Grafo Cósmico 3D y Agentes Multi-IA" class="slider-img zoomable-image" loading="lazy" />
-                  <span class="slide-caption-badge">Grafo Cósmico 3D &bull; Multi-IA</span>
-                </div>
-                <div class="slider-slide">
-                  <img src="assets/knowledge-universe-2d-board.png" alt="Knowledge Universe — Tablero 2D Interactivo Sincronizado" class="slider-img zoomable-image" loading="lazy" />
-                  <span class="slide-caption-badge">Tablero 2D Sincronizado</span>
-                </div>
-                <div class="slider-slide">
-                  <img src="assets/02-knowledge-universe-banner.jpg" alt="Knowledge Universe — Espacio Dimensional de Trabajo" class="slider-img zoomable-image" loading="lazy" />
-                  <span class="slide-caption-badge">Espacio Dimensional de Trabajo</span>
+        <article class="showcase-card spotlight-card">
+          <div class="showcase-info">
+            <div class="showcase-header">
+              <span class="showcase-category">INTELIGENCIA ARTIFICIAL &amp; GRAFOS 3D</span>
+              <span class="showcase-lead">Lead: Cristian Villota</span>
+            </div>
+
+            <h3 class="showcase-title">
+              Knowledge Universe &bull; Espacio Cósmico Multi-IA
+            </h3>
+
+            <p class="showcase-desc">
+              Entorno dimensional interactivo a 132 FPS para estructuración, visualización y síntesis de pensamiento con múltiples modelos de IA (ChatGPT, Claude y Gemini) en paralelo.
+            </p>
+
+            <div class="showcase-specs">
+              <div class="spec-row">
+                <span class="spec-check">✓</span>
+                <div class="spec-text">
+                  <span class="spec-label">132 FPS Nativos:</span> Canvas 3D desacoplado con render loop acelerado por hardware sin pausas en React.
                 </div>
               </div>
+              <div class="spec-row">
+                <span class="spec-check">✓</span>
+                <div class="spec-text">
+                  <span class="spec-label">Multi-Agente Sincronizado:</span> Orquestación simultánea y memoria contextual con ChatGPT, Claude y Gemini.
+                </div>
+              </div>
+              <div class="spec-row">
+                <span class="spec-check">✓</span>
+                <div class="spec-text">
+                  <span class="spec-label">Ingesta Semántica:</span> Extracción e indexación profunda de documentos PDF y Word para generación de grafos.
+                </div>
+              </div>
+              <div class="spec-row">
+                <span class="spec-check">✓</span>
+                <div class="spec-text">
+                  <span class="spec-label">Dual-View Sincronizado:</span> Tablero 2D interactivo y universo estelar 3D enlazados bidireccionalmente.
+                </div>
+              </div>
+            </div>
 
-              <button class="slider-arrow prev" aria-label="Imagen anterior">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-              </button>
-              <button class="slider-arrow next" aria-label="Siguiente imagen">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </button>
+            <div class="showcase-badges">
+              <span class="showcase-badge">React 19</span>
+              <span class="showcase-badge">Three.js</span>
+              <span class="showcase-badge">TypeScript</span>
+              <span class="showcase-badge">Multi-IA</span>
+              <span class="showcase-badge">PDF/Docx</span>
+              <span class="showcase-badge">Tailwind CSS</span>
+            </div>
 
-              <div class="slider-dots"></div>
+            <div class="showcase-actions">
+              <a href="https://knowledge-universe-mvp.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-demo-glow">
+                🎮 Ver Demo en Vivo
+              </a>
+              <a href="https://github.com/PkDuke/Knowledge-Universe-MVP" target="_blank" rel="noopener noreferrer" class="btn-github-subtle">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
 
+          <div class="showcase-gallery">
+            <div class="gallery-main-wrap">
+              <img src="assets/knowledge-universe-cosmic-ui.png" alt="Knowledge Universe — Universo Cósmico 3D y Agentes Multi-IA" class="gallery-main-img zoomable-image" loading="lazy" />
               <div class="zoom-overlay-hint">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
                 Click para ampliar
               </div>
             </div>
 
-            <div class="project-header-row">
-              <span class="project-status-badge status-stable">
-                🟢 MVP Desplegado &bull; Producción
-              </span>
-              <h3 class="project-name">
-                Knowledge Universe — Espacio Cósmico Multi-IA
-                <a href="https://knowledge-universe-mvp.vercel.app/" target="_blank" rel="noopener noreferrer" title="Abrir demo de Knowledge Universe">
-                  <svg class="ext-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                  </svg>
-                </a>
-              </h3>
-            </div>
-
-            <p class="project-desc">
-              Entorno espacial 3D a <strong>132 FPS</strong> para visualizar, expandir y conectar cadenas de pensamiento con múltiples agentes inteligentes (ChatGPT, Claude y Gemini) de forma simultánea.
-            </p>
-
-            <div class="project-highlights">
-              <div class="highlight-item">
-                <strong>Reto:</strong> Representar cientos de nodos densos sin bloqueos en el hilo principal de React.
+            <div class="gallery-sub-grid">
+              <div class="gallery-sub-wrap">
+                <img src="assets/knowledge-universe-2d-board.png" alt="Knowledge Universe — Tablero 2D Interactivo Sincronizado" class="gallery-sub-img zoomable-image" loading="lazy" />
               </div>
-              <div class="highlight-item">
-                <strong>Solución:</strong> Canvas 3D desacoplado con render loop nativo y sincronización bidireccional con tablero 2D.
-              </div>
-              <div class="highlight-item">
-                <strong>Capacidad:</strong> Ingesta semántica profunda de documentos PDF y Word para extracción de conocimiento.
+              <div class="gallery-sub-wrap">
+                <img src="assets/02-knowledge-universe-banner.jpg" alt="Knowledge Universe — Espacio Dimensional de Trabajo" class="gallery-sub-img zoomable-image" loading="lazy" />
               </div>
             </div>
-
-            <div class="project-actions">
-              <a href="https://knowledge-universe-mvp.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-btn primary">
-                ▶ Demo en Vivo
-              </a>
-              <a href="https://github.com/PkDuke/Knowledge-Universe-MVP" target="_blank" rel="noopener noreferrer" class="project-btn">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                Repositorio
-              </a>
-            </div>
-          </div>
-
-          <div class="project-badges">
-            <span class="project-badge badge-accent">React 19</span>
-            <span class="project-badge badge-accent">Three.js</span>
-            <span class="project-badge badge-info">132 FPS</span>
-            <span class="project-badge badge-secondary">Multi-IA</span>
-            <span class="project-badge badge-secondary">PDF &amp; Word Parser</span>
-            <span class="project-badge badge-secondary">TypeScript</span>
           </div>
         </article>
 
         <!-- PROYECTO 3: PIPELINE WEBGPU -->
-        <article class="project-card spotlight-card">
-          <div class="project-top">
-            <div class="project-slider" data-interval="5000">
-              <div class="slider-track">
-                <div class="slider-slide active">
-                  <img src="assets/03-aforo-rendimiento-masivo-1000-objetos.jpg" alt="Pipeline WebGPU — Benchmark +1.000 Objetos a 145.5 FPS" class="slider-img zoomable-image" loading="lazy" />
-                  <span class="slide-caption-badge">Benchmark: +1.000 Objetos a 145.5 FPS</span>
-                </div>
-                <div class="slider-slide">
-                  <img src="assets/media_1789667421898.png" alt="Pipeline WebGPU — Renderizado de Geometrías por Lotes" class="slider-img zoomable-image" loading="lazy" />
-                  <span class="slide-caption-badge">Renderizado por Lotes (2 Draw Calls)</span>
-                </div>
-                <div class="slider-slide">
-                  <img src="assets/02-aforo-colocacion-precision-cad.jpg" alt="Pipeline WebGPU — Precisión Espacial y Memoria Compartida" class="slider-img zoomable-image" loading="lazy" />
-                  <span class="slide-caption-badge">Memoria Compartida &bull; Zero-GC</span>
+        <article class="showcase-card spotlight-card">
+          <div class="showcase-info">
+            <div class="showcase-header">
+              <span class="showcase-category">ARQUITECTURA GPU &amp; RENDIMIENTO EXTREMO</span>
+              <span class="showcase-lead">Lead: Cristian Villota</span>
+            </div>
+
+            <h3 class="showcase-title">
+              Pipeline WebGPU &bull; Instancing Masivo de Geometrías
+            </h3>
+
+            <p class="showcase-desc">
+              Motor de renderizado y empaquetado por lotes para el navegador, optimizado para escenas masivas ultra densas con cero recolección de basura.
+            </p>
+
+            <div class="showcase-specs">
+              <div class="spec-row">
+                <span class="spec-check">✓</span>
+                <div class="spec-text">
+                  <span class="spec-label">2 Draw Calls:</span> Empaquetado de miles de geometrías paramétricas en buffers de instancing compartidos.
                 </div>
               </div>
+              <div class="spec-row">
+                <span class="spec-check">✓</span>
+                <div class="spec-text">
+                  <span class="spec-label">Zero-GC Frame Loop:</span> Bucle de renderizado sin asignaciones de memoria dinámicas para eliminar micro-stutters.
+                </div>
+              </div>
+              <div class="spec-row">
+                <span class="spec-check">✓</span>
+                <div class="spec-text">
+                  <span class="spec-label">Shaders Personalizados:</span> Pipelines de cómputo y fragmentos en GLSL y WGSL para iluminación eficiente.
+                </div>
+              </div>
+              <div class="spec-row">
+                <span class="spec-check">✓</span>
+                <div class="spec-text">
+                  <span class="spec-label">Escalabilidad Comprobada:</span> Fluidez estable a más de 145 FPS bajo carga visual masiva.
+                </div>
+              </div>
+            </div>
 
-              <button class="slider-arrow prev" aria-label="Imagen anterior">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-              </button>
-              <button class="slider-arrow next" aria-label="Siguiente imagen">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </button>
+            <div class="showcase-badges">
+              <span class="showcase-badge">WebGPU</span>
+              <span class="showcase-badge">WGSL</span>
+              <span class="showcase-badge">GLSL Shaders</span>
+              <span class="showcase-badge">InstancedMesh</span>
+              <span class="showcase-badge">Zero-Alloc</span>
+              <span class="showcase-badge">Memory Profiling</span>
+            </div>
 
-              <div class="slider-dots"></div>
+            <div class="showcase-actions">
+              <a href="https://aforo-web-azure.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-demo-glow">
+                🎮 Ver Implementación en AFORO
+              </a>
+              <a href="https://github.com/PkDuke/aforo" target="_blank" rel="noopener noreferrer" class="btn-github-subtle">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
 
+          <div class="showcase-gallery">
+            <div class="gallery-main-wrap">
+              <img src="assets/03-aforo-rendimiento-masivo-1000-objetos.jpg" alt="Pipeline WebGPU — Benchmark +1.000 Objetos a 145.5 FPS" class="gallery-main-img zoomable-image" loading="lazy" />
               <div class="zoom-overlay-hint">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
                 Click para ampliar
               </div>
             </div>
 
-            <div class="project-header-row">
-              <span class="project-status-badge status-research">
-                🟣 Investigación &amp; Arquitectura Gráfica
-              </span>
-              <h3 class="project-name">
-                Pipeline WebGPU &amp; Instancing Masivo
-              </h3>
-            </div>
-
-            <p class="project-desc">
-              Arquitectura de renderizado por lotes mediante GPU Instancing que agrupa miles de geometrías paramétricas en memoria unificada con apenas <strong>2 draw calls</strong> por frame.
-            </p>
-
-            <div class="project-highlights">
-              <div class="highlight-item">
-                <strong>Reto:</strong> Evitar micro-stutters causados por el recolector de basura (GC pauses) durante el paneo y rotación continua.
+            <div class="gallery-sub-grid">
+              <div class="gallery-sub-wrap">
+                <img src="assets/media_1789667421898.png" alt="Pipeline WebGPU — Renderizado de Geometrías por Lotes" class="gallery-sub-img zoomable-image" loading="lazy" />
               </div>
-              <div class="highlight-item">
-                <strong>Solución:</strong> Bucle de renderizado con asignación cero (zero-allocation loop) y buffers de transformación fijos preasignados.
-              </div>
-              <div class="highlight-item">
-                <strong>Shaders:</strong> Shaders de cálculo y fragmento personalizados en GLSL y WGSL para iluminación eficiente.
+              <div class="gallery-sub-wrap">
+                <img src="assets/02-aforo-colocacion-precision-cad.jpg" alt="Pipeline WebGPU — Precisión Espacial y Memoria Compartida" class="gallery-sub-img zoomable-image" loading="lazy" />
               </div>
             </div>
-
-            <div class="project-actions">
-              <a href="https://aforo-web-azure.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-btn">
-                Ver Implementación en AFORO
-              </a>
-            </div>
-          </div>
-
-          <div class="project-badges">
-            <span class="project-badge badge-accent">WebGPU</span>
-            <span class="project-badge badge-accent">WGSL &amp; GLSL</span>
-            <span class="project-badge badge-info">2 Draw Calls</span>
-            <span class="project-badge badge-secondary">Zero-GC Loop</span>
-            <span class="project-badge badge-secondary">Buffer Packing</span>
           </div>
         </article>
       </div>

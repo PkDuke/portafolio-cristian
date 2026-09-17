@@ -1146,8 +1146,285 @@ main > section,
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   SHOWCASE CARDS (HORIZONTAL 2-COLUMN SPLIT FEATURED LAYOUT)
+   ═══════════════════════════════════════════════════════════════ */
+.showcase-card {
+  display: grid;
+  grid-template-columns: 1fr 1.18fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: center;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+  margin-bottom: var(--space-2xl);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--duration-mid) var(--ease), border-color var(--duration-mid) var(--ease), box-shadow var(--duration-mid) var(--ease);
+}
+
+.showcase-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(580px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.12), transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--duration-mid) ease;
+  z-index: 1;
+}
+
+.showcase-card:hover {
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.55),
+    0 0 50px rgba(56, 189, 248, 0.15);
+  transform: translateY(-3px);
+}
+
+.showcase-card:hover::before {
+  opacity: 1;
+}
+
+.showcase-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.showcase-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.showcase-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.showcase-category {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--custom-accent);
+}
+
+.showcase-lead {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.showcase-title {
+  font-size: clamp(1.4rem, 2.3vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.showcase-desc {
+  font-size: 0.96rem;
+  line-height: 1.75;
+  color: #cbd5e1;
+}
+
+/* Specs List with Green Checks */
+.showcase-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-block: 2px;
+}
+
+.spec-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.spec-check {
+  color: var(--accent-teal);
+  font-weight: 900;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.spec-text {
+  color: #e2e8f0;
+}
+
+.spec-label {
+  font-weight: 800;
+  color: #ffffff;
+  margin-right: 6px;
+}
+
+.spec-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.86em;
+  color: #7dd3fc;
+}
+
+/* Badges row */
+.showcase-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.showcase-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  letter-spacing: 0.02em;
+}
+
+/* Actions */
+.showcase-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.btn-demo-glow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  color: #ffffff !important;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all var(--duration-fast) var(--ease);
+}
+
+.btn-demo-glow:hover {
+  background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+  box-shadow: 0 6px 28px rgba(99, 102, 241, 0.55);
+  transform: translateY(-2px);
+}
+
+.btn-github-subtle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: all var(--duration-fast) var(--ease);
+}
+
+.btn-github-subtle:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: var(--custom-accent);
+  transform: translateY(-2px);
+}
+
+/* Gallery Right Column */
+.showcase-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.gallery-main-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9.5;
+  background: #070b16;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  cursor: zoom-in;
+  transition: transform var(--duration-mid) var(--ease), filter var(--duration-mid) ease;
+}
+
+.gallery-main-wrap:hover .gallery-main-img {
+  transform: scale(1.02);
+  filter: brightness(1.05);
+}
+
+.gallery-sub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.gallery-sub-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #070b16;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.gallery-sub-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  cursor: zoom-in;
+  transition: transform var(--duration-mid) var(--ease), filter var(--duration-mid) ease;
+}
+
+.gallery-sub-wrap:hover .gallery-sub-img {
+  transform: scale(1.035);
+  filter: brightness(1.08);
+}
+
+/* ═══════════════════════════════════════════════════════════════
    RESPONSIVE BREAKPOINTS
    ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 960px) {
+  .showcase-card {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
 @media (max-width: 900px) {
   .metrics-bar {
     grid-template-columns: repeat(2, 1fr);
