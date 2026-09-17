@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cristian Villota Vega — Lead 3D Web & Interactive Systems Engineer</title>
+  <meta name="description" content="Portafolio de Cristian Villota Vega. Lead 3D Web & Interactive Systems Engineer especializado en WebGPU, Three.js, React 19, motores CAD y renderizado de ultra alto rendimiento en el navegador." />
+  
+  <!-- Satoshi Font (Fontshare) -->
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,800,900&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER / NAVEGACIÓN -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="Inicio">
+        <div class="nav-logo-box">CV</div>
+        <span>Cristian Villota</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#proyectos" class="nav-link">Proyectos</a>
+        <a href="#experiencia" class="nav-link">Experiencia</a>
+        <a href="#stack" class="nav-link">Stack</a>
+        <a href="#contacto" class="nav-cta-btn">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+
+      <div class="hero-text">
+        <h1 class="hero-name">Cristian Villota Vega</h1>
+        <p class="hero-title">Lead 3D Web & Interactive Systems Engineer</p>
+        <p class="hero-tagline">
+          Diseño e implemento motores gráficos en el navegador de ultra alto rendimiento (145+ FPS), sistemas CAD 3D de precisión milimétrica y espacios de trabajo interactivos con IA.
+        </p>
+      </div>
+
+      <div class="hero-body">
+        <div class="hero-avatar">
+          <div class="avatar-graphic" title="Cristian Villota — 3D Web & WebGPU Graphics">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Geometric 3D Cube / WebGPU Wireframe -->
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              <circle cx="12" cy="12" r="2.5" fill="currentColor" opacity="0.8"></circle>
+            </svg>
+            <div class="avatar-badge">WebGPU &bull; Three.js</div>
+          </div>
+        </div>
+
+        <div class="hero-aside">
+          <div class="social-row">
+            <a href="https://github.com/PkDuke" target="_blank" rel="noopener noreferrer" class="social-link" title="Perfil de GitHub @PkDuke">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="mailto:fabian.vega.1407@gmail.com" class="social-link" title="Enviar correo a Cristian">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </a>
+            <a href="https://nexus-collective.pages.dev" target="_blank" rel="noopener noreferrer" class="social-link" title="NEXUS Colectivo Técnico">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </a>
+          </div>
+
+          <div class="hero-card">
+            Ingeniero de software con enfoque en sistemas gráficos interactivos de nivel de producción. Especializado en arquitectura de motores en el cliente, optimización de draw calls mediante GPU instancing, renderizado bajo demanda con consumo cero en reposo y suites de pruebas rigurosas.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA SECTION -->
+    <section class="experience" id="experiencia">
+      <div class="open-badge">🟢 Disponible para proyectos y consultoría técnica</div>
+      <h2 class="section-title">Experiencia</h2>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-role">Lead 3D Web & Interactive Systems Engineer</span>
+          <span class="exp-company">— AFORO & NEXUS Studio</span>
+        </div>
+        <p class="exp-dates">2024 — Presente &bull; Remoto / Colombia</p>
+
+        <p class="exp-intro">
+          Liderazgo técnico en la concepción y desarrollo de herramientas interactivas complejas en el navegador, abarcando desde software CAD espacial hasta plataformas multi-agente con grafos cósmicos en 3D.
+        </p>
+
+        <ul class="exp-list">
+          <li>Arquitectura de software CAD 2D/3D con Three.js y WebGPU, soportando más de 1.000 elementos espaciales interactivos en tiempo real a 145.5 FPS constantes.</li>
+          <li>Implementación de pipelines de renderizado bajo demanda (0W / 0 FPS en reposo), eliminando consumo innecesario de GPU y batería en dispositivos móviles y portátiles.</li>
+          <li>Diseño y desarrollo de Knowledge Universe: espacio de trabajo 3D a 132 FPS para interacción multimodal con ChatGPT, Claude y Gemini con ingesta de documentos PDF/Word.</li>
+          <li>Gestión de monorrepositorios con Turborepo, Bun y TypeScript estricto; integración de 68 tests automatizados con 2.944 aserciones matemáticas verificadas en CI/CD.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROYECTOS SECTION -->
+    <section class="projects" id="proyectos">
+      <h2 class="section-title">Proyectos Destacados</h2>
+
+      <div class="projects-grid">
+        <!-- PROYECTO 1: AFORO -->
+        <article class="project-card">
+          <div class="project-top">
+            <img src="assets/01-aforo-banner-principal.jpg" alt="AFORO CAD 3D" class="project-thumbnail" loading="lazy" />
+            <h3 class="project-name">
+              AFORO — Motor CAD 3D de Planificación Espacial
+              <a href="https://aforo-web-azure.vercel.app/" target="_blank" rel="noopener noreferrer" title="Abrir demo de AFORO">
+                <svg class="ext-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            </h3>
+
+            <p class="project-desc">
+              Editor 2D/3D para diseño técnico y montaje de eventos en recintos de gran escala. Implementa renderizado condicional con consumo cero en reposo, renderizado masivo mediante instancing que sostiene <strong>145.5 FPS</strong> con más de 1.000 objetos simultáneos, catálogo paramétrico con <strong>902 elementos</strong> y suite de <strong>68 pruebas unitarias (2.944 aserciones)</strong>.
+            </p>
+
+            <div class="project-actions">
+              <a href="https://aforo-web-azure.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-btn primary">
+                ▶ Demo en Vivo
+              </a>
+              <a href="https://github.com/PkDuke/aforo" target="_blank" rel="noopener noreferrer" class="project-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Repositorio
+              </a>
+            </div>
+          </div>
+
+          <div class="project-media">
+            <span class="project-badge badge-accent">Three.js</span>
+            <span class="project-badge badge-accent">WebGPU</span>
+            <span class="project-badge badge-info">145.5 FPS</span>
+            <span class="project-badge badge-info">0 FPS Idle</span>
+            <span class="project-badge badge-secondary">Next.js 15</span>
+            <span class="project-badge badge-secondary">Turborepo</span>
+            <span class="project-badge badge-secondary">Bun</span>
+          </div>
+        </article>
+
+        <!-- PROYECTO 2: KNOWLEDGE UNIVERSE -->
+        <article class="project-card">
+          <div class="project-top">
+            <img src="assets/02-knowledge-universe-banner.jpg" alt="Knowledge Universe 3D Canvas" class="project-thumbnail" loading="lazy" />
+            <h3 class="project-name">
+              Knowledge Universe — Espacio de Trabajo Cósmico Multi-IA
+              <a href="https://knowledge-universe-mvp.vercel.app/" target="_blank" rel="noopener noreferrer" title="Abrir demo de Knowledge Universe">
+                <svg class="ext-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            </h3>
+
+            <p class="project-desc">
+              Entorno dimensional inmersivo a <strong>132 FPS</strong> para orquestar y visualizar sesiones de pensamiento y memoria con múltiples modelos de IA (ChatGPT, Claude y Gemini). Integra ingesta semántica profunda de documentos PDF y Word, nodos de conocimiento espaciales y sincronización fluida entre grafo 3D y tablero 2D.
+            </p>
+
+            <div class="project-actions">
+              <a href="https://knowledge-universe-mvp.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-btn primary">
+                ▶ Demo en Vivo
+              </a>
+              <a href="https://github.com/PkDuke/Knowledge-Universe-MVP" target="_blank" rel="noopener noreferrer" class="project-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Repositorio
+              </a>
+            </div>
+          </div>
+
+          <div class="project-media">
+            <span class="project-badge badge-accent">React 19</span>
+            <span class="project-badge badge-accent">Three.js</span>
+            <span class="project-badge badge-info">132 FPS</span>
+            <span class="project-badge badge-secondary">Multi-IA</span>
+            <span class="project-badge badge-secondary">PDF/Docx Ingestion</span>
+            <span class="project-badge badge-secondary">TypeScript</span>
+          </div>
+        </article>
+
+        <!-- PROYECTO 3: PIPELINE WEBGPU -->
+        <article class="project-card">
+          <div class="project-top">
+            <img src="assets/03-aforo-rendimiento-masivo-1000-objetos.jpg" alt="WebGPU Instancing Masivo" class="project-thumbnail" loading="lazy" />
+            <h3 class="project-name">
+              Pipeline WebGPU & Instancing de Rendimiento Masivo
+            </h3>
+
+            <p class="project-desc">
+              Arquitectura de renderizado por lotes mediante GPU Instancing que unifica geometrías paramétricas complejas en buffers compartidos con apenas <strong>2 draw calls</strong>. Diseñado con bucles de asignación cero de memoria (zero-allocation frame loop), eliminando pausas por recolección de basura (GC pauses) durante la manipulación de escenas densas.
+            </p>
+
+            <div class="project-actions">
+              <a href="https://aforo-web-azure.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-btn">
+                Ver Implementación en AFORO
+              </a>
+            </div>
+          </div>
+
+          <div class="project-media">
+            <span class="project-badge badge-accent">WebGPU</span>
+            <span class="project-badge badge-accent">WGSL & GLSL</span>
+            <span class="project-badge badge-info">2 Draw Calls</span>
+            <span class="project-badge badge-secondary">InstancedMesh</span>
+            <span class="project-badge badge-secondary">Zero-GC Loop</span>
+          </div>
+        </article>
+
+        <!-- PROYECTO 4: NEXUS STUDIO -->
+        <article class="project-card">
+          <div class="project-top">
+            <img src="assets/04-aforo-showcase-social-kpis.jpg" alt="NEXUS Studio Colectivo" class="project-thumbnail" loading="lazy" />
+            <h3 class="project-name">
+              NEXUS Studio — Showroom de Ingeniería y VFX
+              <a href="https://nexus-collective.pages.dev" target="_blank" rel="noopener noreferrer" title="Abrir web del colectivo NEXUS">
+                <svg class="ext-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            </h3>
+
+            <p class="project-desc">
+              Plataforma y showcase del colectivo técnico de ingeniería y artes digitales formado junto a Marcos Carbajo (Lead AI Systems) y Davide (Senior 3D Artist & Director de VFX). Arquitectura estática ultrarrápida en Cloudflare Pages con navegación interactiva y métricas técnicas en vivo.
+            </p>
+
+            <div class="project-actions">
+              <a href="https://nexus-collective.pages.dev" target="_blank" rel="noopener noreferrer" class="project-btn primary">
+                ▶ Ver Colectivo NEXUS
+              </a>
+            </div>
+          </div>
+
+          <div class="project-media">
+            <span class="project-badge badge-accent">Web Performance</span>
+            <span class="project-badge badge-secondary">Cloudflare Edge</span>
+            <span class="project-badge badge-secondary">UI/UX Dark Modern</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- STACK SECTION -->
+    <section class="stack" id="stack">
+      <h2 class="section-title">Stack Tecnológico</h2>
+      <div class="stack-grid">
+        <div class="stack-badge">⚡ WebGPU & WGSL</div>
+        <div class="stack-badge">🎮 Three.js & WebGL</div>
+        <div class="stack-badge">⚛️ React 19 & Next.js 15</div>
+        <div class="stack-badge">🔷 TypeScript (Strict Mode)</div>
+        <div class="stack-badge">📦 Turborepo & Monorepos</div>
+        <div class="stack-badge">🚀 Bun Runtime & Package Manager</div>
+        <div class="stack-badge">📐 Pascal Editor Core CAD</div>
+        <div class="stack-badge">🎨 GLSL Custom Shaders</div>
+        <div class="stack-badge">🛡️ Zod Data Contracts</div>
+        <div class="stack-badge">🧪 Automated Testing (Vitest / Node Test)</div>
+        <div class="stack-badge">☁️ Cloudflare Pages & Vercel Edge</div>
+        <div class="stack-badge">🌐 3D Canvas Multi-IA</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER / CONTACTO -->
+  <footer class="site-footer" id="contacto">
+    <div class="footer-social">
+      <a href="https://github.com/PkDuke" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+        </svg>
+      </a>
+      <a href="mailto:fabian.vega.1407@gmail.com" class="social-link" title="Correo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+        </svg>
+      </a>
+    </div>
+
+    <p class="footer-copy">
+      &copy; 2026 Cristian Villota Vega &bull; Lead 3D Web & Interactive Systems Engineer &bull; Diseñado con precisión para la web de ultra alto rendimiento.
+    </p>
+  </footer>
+
+</body>
+</html>
