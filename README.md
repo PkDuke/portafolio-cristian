@@ -1,12 +1,13 @@
 # Portafolio Personal — Cristian Villota Vega
 
-Portafolio web minimalista y de alto rendimiento de **Cristian Villota Vega**, Lead 3D Web & Interactive Systems Engineer. Inspirado en el diseño técnico y estético moderno para desarrollo WebGPU, Three.js, React 19 y arquitectura de sistemas CAD en el navegador.
+Portafolio web minimalista y de alto rendimiento de **Cristian Villota Vega**, Lead 3D Web & Interactive Systems Engineer. Especializado en arquitectura de software 3D para el navegador, WebGPU, Three.js, React 19 y motores CAD de ultra alto rendimiento.
 
 ---
 
 ## 🚀 Proyectos Destacados Incluidos
 
-1. **AFORO — Motor CAD 3D de Planificación Espacial para Eventos**
+1. **AFORO — Motor CAD 3D de Planificación Espacial (En Construcción / Alpha Activa)**
+   - Software CAD 2D/3D especializado en diseño técnico de recintos de eventos.
    - Renderizado condicional bajo demanda (0W / 0 FPS en reposo).
    - GPU Instancing masivo con soporte de más de 1.000 elementos simultáneos a **145.5 FPS**.
    - Catálogo paramétrico con 902 objetos y 68 pruebas automatizadas (2.944 aserciones).
@@ -23,10 +24,6 @@ Portafolio web minimalista y de alto rendimiento de **Cristian Villota Vega**, L
    - Renderizado por lotes con apenas **2 draw calls** para escenas complejas.
    - Shaders personalizados en GLSL y WGSL.
    - Bucle de renderizado sin recolección de basura (Zero-GC loop).
-
-4. **NEXUS Studio — Showroom Colectivo**
-   - Showcase técnico de ingeniería, VFX e inteligencia artificial.
-   - Enlace: [https://nexus-collective.pages.dev](https://nexus-collective.pages.dev)
 
 ---
 
@@ -52,6 +49,6 @@ python -m http.server 8080
 1. Sube este repositorio a tu cuenta de GitHub (por ejemplo, con el nombre `portfolio` o `pkduke.github.io`).
 2. En GitHub, ve a **Settings** > **Pages**.
 3. En **Branch**, selecciona `main` y la carpeta `/ (root)`.
-4. Haz clic en **Save**. En un par de minutos estará disponible en:
+4. Haz clic en **Save**. En 1 o 2 minutos estará disponible en:
    - `https://pkduke.github.io/portfolio/` (si el repo se llama `portfolio`)
    - O `https://pkduke.github.io/` (si el repo se llama `pkduke.github.io`).

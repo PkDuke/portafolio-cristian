@@ -646,6 +646,12 @@ main > section,
   border: 1px solid rgba(16, 185, 129, 0.24);
 }
 
+.badge-warning {
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
 .badge-secondary {
   color: var(--text-muted);
   background: rgba(255, 255, 255, 0.04);
