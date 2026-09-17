@@ -104,7 +104,117 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 5. High-Performance Geometric Background Canvas
   initHeroCanvas();
+
+  // 6. Mini Galleries / Project Sliders with autoplay and arrows
+  initProjectSliders();
 });
+
+/**
+ * Mini Galleries / Project Sliders (Autoplay, arrows, dots, touch swipe)
+ */
+function initProjectSliders() {
+  const sliders = document.querySelectorAll('.project-slider');
+
+  sliders.forEach(slider => {
+    const slides = slider.querySelectorAll('.slider-slide');
+    const dotsContainer = slider.querySelector('.slider-dots');
+    const prevBtn = slider.querySelector('.slider-arrow.prev');
+    const nextBtn = slider.querySelector('.slider-arrow.next');
+
+    if (slides.length <= 1) return;
+
+    let currentIndex = 0;
+    let autoplayTimer = null;
+    const interval = parseInt(slider.getAttribute('data-interval') || '4200', 10);
+
+    // Create dots
+    if (dotsContainer) {
+      dotsContainer.innerHTML = '';
+      slides.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.className = `slider-dot ${idx === 0 ? 'active' : ''}`;
+        dot.setAttribute('aria-label', `Ir a imagen ${idx + 1}`);
+        dot.addEventListener('click', (e) => {
+          e.stopPropagation();
+          goToSlide(idx);
+          resetAutoplay();
+        });
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    const updateDots = () => {
+      if (!dotsContainer) return;
+      const dots = dotsContainer.querySelectorAll('.slider-dot');
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentIndex);
+      });
+    };
+
+    const goToSlide = (newIndex) => {
+      slides[currentIndex].classList.remove('active');
+      currentIndex = (newIndex + slides.length) % slides.length;
+      slides[currentIndex].classList.add('active');
+      updateDots();
+    };
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToSlide(currentIndex - 1);
+        resetAutoplay();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToSlide(currentIndex + 1);
+        resetAutoplay();
+      });
+    }
+
+    // Touch Swipe for mobile
+    let touchStartX = 0;
+    slider.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) goToSlide(currentIndex + 1);
+        else goToSlide(currentIndex - 1);
+        resetAutoplay();
+      }
+    }, { passive: true });
+
+    // Autoplay
+    const startAutoplay = () => {
+      if (autoplayTimer) clearInterval(autoplayTimer);
+      autoplayTimer = setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, interval);
+    };
+
+    const stopAutoplay = () => {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    };
+
+    const resetAutoplay = () => {
+      stopAutoplay();
+      startAutoplay();
+    };
+
+    slider.addEventListener('mouseenter', stopAutoplay);
+    slider.addEventListener('mouseleave', startAutoplay);
+
+    startAutoplay();
+  });
+}
 
 /**
  * Procedural 3D Constellation / Polyhedron Wireframe
