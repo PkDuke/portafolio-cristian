@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (copyBtn) {
     copyBtn.addEventListener('click', async () => {
-      const email = copyBtn.getAttribute('data-email') || 'fabian.vega.1407@gmail.com';
+      const email = copyBtn.getAttribute('data-email') || 'cfvv88@gmail.com';
       try {
         await navigator.clipboard.writeText(email);
         showToast('✓ Correo copiado al portapapeles');
