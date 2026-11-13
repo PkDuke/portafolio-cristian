@@ -25,6 +25,17 @@ Portafolio web minimalista y de alto rendimiento de **Cristian Villota Vega**, L
    - Shaders personalizados en GLSL y WGSL.
    - Bucle de renderizado sin recolección de basura (Zero-GC loop).
 
+4. **Juegos Educativos para Niños** (web, Android y Windows)
+   - **Mundo Pequeño** — más de 25 juegos para 2 a 4 años; PWA offline + Capacitor, QA visual con Playwright.
+   - **Lumbrera** — historias bíblicas interactivas para 8 a 12 años; TypeScript, Phaser, ElevenLabs.
+   - **El Gran Reto Bíblico** — concurso de 15 preguntas; React + Capacitor + Electron.
+     Demo web jugable en [`demos/gran-reto/`](demos/gran-reto/) (build de Vite).
+
+5. **Datos & Territorio**
+   - **ATLAS Arauca** — observatorio agrícola territorial sobre DANE MGN 2025 (en construcción).
+   - **Análisis y Gestión de Datos** — KoBo Toolbox, PRIMES, Power BI y automatización de reportes.
+   - **Cíclope** — aprendizaje personalizado con IA para K-12 (MVP).
+
 ---
 
 ## 🛠️ Cómo Probar Localmente
