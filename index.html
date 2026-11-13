@@ -32,7 +32,8 @@
 
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="#proyectos" class="nav-link">Proyectos</a>
-        <a href="#impacto" class="nav-link">Datos &amp; Territorio</a>
+        <a href="#apps" class="nav-link">Apps Educativas</a>
+        <a href="#impacto" class="nav-link">Datos</a>
         <a href="#experiencia" class="nav-link">Experiencia</a>
         <a href="#stack" class="nav-link">Stack</a>
         <a href="#contacto" class="nav-cta-btn">
@@ -476,6 +477,99 @@
       </div>
     </section>
 
+    <!-- APPS EDUCATIVAS -->
+    <section class="projects impact" id="apps">
+      <div class="section-header">
+        <div class="section-tag">Apps Educativas &bull; Web, Android &amp; Windows</div>
+        <h2 class="section-title">Juegos Educativos para Niños</h2>
+        <p class="section-subtitle">Tres aplicaciones diseñadas y desarrolladas de principio a fin: idea, experiencia por edad, contenido, programación, pruebas y empaquetado nativo. Funcionan sin internet y no recogen datos de los niños.</p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- MUNDO PEQUEÑO -->
+        <article class="project-card spotlight-card">
+          <div class="project-top">
+            <div class="project-header-row">
+              <span class="project-status-badge status-alpha">🚀 Funcional &bull; Preparando Google Play</span>
+              <h3 class="project-name">🧸 Mundo Pequeño &bull; Juegos para 2 a 4 años</h3>
+            </div>
+            <p class="project-desc">
+              Más de 25 actividades de lógica, números, letras, música, emociones, pintura y vestir personajes, con una voz que guía cada paso. Sin anuncios, sin compras y sin internet.
+            </p>
+            <div class="project-highlights">
+              <div class="highlight-item">✓ <span><strong>12 juegos de lógica</strong>, trazado de números con el dedo, vocales, formas, xilófono de 8 notas y memoria musical con sonidos reales de animales.</span></div>
+              <div class="highlight-item">✓ <span><strong>Estudio de pintura:</strong> 33 dibujos originales, 7 herramientas y 16 colores con sus tonos.</span></div>
+              <div class="highlight-item">✓ <span><strong>Dificultad adaptativa:</strong> sube sola cada 3 partidas; acierto con melodía y estrellas, error con ánimo y sin castigo.</span></div>
+              <div class="highlight-item">✓ <span><strong>QA visual automatizado:</strong> Playwright en 4 tamaños de pantalla, 232 capturas para detectar textos cortados, botones encimados o tapados por la barra de Android.</span></div>
+              <div class="highlight-item">✓ <span><strong>CI/CD:</strong> GitHub Actions compila el APK firmado en cada cambio y la app detecta versiones nuevas.</span></div>
+            </div>
+          </div>
+          <div class="project-badges">
+            <span class="project-badge badge-accent">JavaScript + Canvas</span>
+            <span class="project-badge badge-info">PWA Offline</span>
+            <span class="project-badge badge-secondary">Capacitor 8</span>
+            <span class="project-badge badge-secondary">Web Speech API</span>
+          </div>
+        </article>
+
+        <!-- LUMBRERA -->
+        <article class="project-card spotlight-card">
+          <div class="project-top">
+            <div class="project-header-row">
+              <span class="project-status-badge status-research">👨‍👩‍👧 En prueba con familias</span>
+              <h3 class="project-name">✨ Lumbrera &bull; Historias Bíblicas Interactivas</h3>
+            </div>
+            <p class="project-desc">
+              Historias de la Biblia para niños de 8 a 12 años con ilustraciones tipo cómic, narración con voz, escenas vivas, minijuegos, retos de preguntas, insignias y una guía para conversar en familia.
+            </p>
+            <div class="project-highlights">
+              <div class="highlight-item">✓ <span><strong>Contenido:</strong> 7 historias completas, más de 20 escenas vivas y 7 minijuegos en Phaser; 9 caminos planificados.</span></div>
+              <div class="highlight-item">✓ <span><strong>Voz con ElevenLabs:</strong> narración generada por script que solo regenera las frases que cambiaron.</span></div>
+              <div class="highlight-item">✓ <span><strong>Dirección de arte con IA:</strong> biblia de arte propia con paletas, fichas de personajes y lista de revisión por imagen.</span></div>
+              <div class="highlight-item">✓ <span><strong>Calidad editorial automatizada:</strong> glosario de pronunciación, verificación de versículos y bloqueo de voces si hay errores.</span></div>
+              <div class="highlight-item">✓ <span><strong>Listo para traducir:</strong> inventario de ~8.700 palabras extraído con el compilador de TypeScript.</span></div>
+              <div class="highlight-item">✓ <span><strong>Política de Familias de Google Play:</strong> sin datos personales, sin anuncios y puerta para adultos.</span></div>
+            </div>
+          </div>
+          <div class="project-badges">
+            <span class="project-badge badge-accent">TypeScript + Vite</span>
+            <span class="project-badge badge-info">Phaser 3</span>
+            <span class="project-badge badge-secondary">Capacitor 8</span>
+            <span class="project-badge badge-secondary">Playwright (375 capturas)</span>
+          </div>
+        </article>
+
+        <!-- GRAN RETO BÍBLICO -->
+        <article class="project-card spotlight-card">
+          <div class="project-top">
+            <div class="project-header-row">
+              <span class="project-status-badge status-stable">✅ Versión 1.0</span>
+              <h3 class="project-name">🏆 El Gran Reto Bíblico &bull; Concurso de Preguntas</h3>
+            </div>
+            <p class="project-desc">
+              Concurso al estilo de los programas de televisión de 15 preguntas, para jugar en casa o proyectar en la iglesia.
+            </p>
+            <div class="project-highlights">
+              <div class="highlight-item">✓ <span><strong>145 preguntas propias</strong> en 7 temáticas más el modo «Todo Génesis», con tres niveles de dificultad.</span></div>
+              <div class="highlight-item">✓ <span><strong>Escalera de 100 a 1.000.000 de puntos</strong> con escalones seguros, reloj opcional y opción de plantarse.</span></div>
+              <div class="highlight-item">✓ <span><strong>4 comodines:</strong> 50:50, el público, pista bíblica y cambiar pregunta.</span></div>
+              <div class="highlight-item">✓ <span><strong>Un solo código, dos plataformas:</strong> Android con Capacitor e instalador de Windows con Electron; ambos publicados por GitHub Actions.</span></div>
+              <div class="highlight-item">✓ <span><strong>Audio original:</strong> sonidos generados en tiempo real con Web Audio API.</span></div>
+            </div>
+          </div>
+          <div class="project-badges">
+            <span class="project-badge badge-accent">React + TypeScript</span>
+            <span class="project-badge badge-info">Electron (NSIS)</span>
+            <span class="project-badge badge-secondary">Capacitor</span>
+            <span class="project-badge badge-secondary">Web Audio API</span>
+          </div>
+        </article>
+      </div>
+
+      <p class="section-subtitle impact-note">
+        Desarrollo asistido por herramientas de IA para programación (Claude Code y Codex). Mi rol: definir el producto, diseñar la experiencia para cada edad, escribir y revisar el contenido, dirigir el arte, probar con usuarios reales y montar el flujo de compilación y publicación.
+      </p>
+    </section>
     <!-- DATOS, TERRITORIO & IMPACTO -->
     <section class="projects impact" id="impacto">
       <div class="section-header">
@@ -509,98 +603,28 @@
           </div>
         </article>
 
-        <!-- INVER7 COTIZADOR -->
-        <article class="project-card spotlight-card">
-          <div class="project-top">
-            <div class="project-header-row">
-              <span class="project-status-badge status-stable">✅ Completado</span>
-              <h3 class="project-name">🧾 INVER7 &bull; Cotizador Web para Catering y Eventos</h3>
-            </div>
-            <p class="project-desc">
-              Aplicación web interactiva de cotización para INVER7 SAS, empresa de catering y eventos con clientes del sector público y privado. Precursora directa del motor de AFORO.
-            </p>
-            <div class="project-highlights">
-              <div class="highlight-item">✓ <span><strong>Gestión comercial:</strong> almacenamiento persistente, base de clientes e historial de cotizaciones.</span></div>
-              <div class="highlight-item">✓ <span><strong>Lógica tributaria colombiana:</strong> IVA, retención en la fuente para declarantes y no declarantes y reteIVA.</span></div>
-              <div class="highlight-item">✓ <span><strong>Documentos de marca:</strong> generación de cotizaciones y cuentas de cobro en PDF y Word.</span></div>
-            </div>
-          </div>
-          <div class="project-badges">
-            <span class="project-badge badge-accent">Web App</span>
-            <span class="project-badge badge-info">Automatización Documental</span>
-            <span class="project-badge badge-secondary">ReportLab / PDF</span>
-          </div>
-        </article>
-
-        <!-- AUDITORÍA DOCUMENTAL -->
-        <article class="project-card spotlight-card">
-          <div class="project-top">
-            <div class="project-header-row">
-              <span class="project-status-badge status-stable">✅ Operativo</span>
-              <h3 class="project-name">📑 Auditoría Documental Asistida por IA</h3>
-            </div>
-            <p class="project-desc">
-              Flujo de extracción y auditoría de PDF escaneados de asistencias técnicas a comedores escolares en varios municipios de Arauca, convertidos en consolidados Excel por municipio, mes y contrato.
-            </p>
-            <div class="project-highlights">
-              <div class="highlight-item">✓ <span><strong>Extracción estructurada:</strong> visita, fecha, municipio, técnico, objeto, actividad y costos de transporte.</span></div>
-              <div class="highlight-item">✓ <span><strong>Reglas de auditoría explícitas:</strong> resolución de formatos sin firma o ilegibles por continuidad del técnico.</span></div>
-              <div class="highlight-item">✓ <span><strong>Trazabilidad contractual:</strong> consolidados separados por vigencia de contrato.</span></div>
-            </div>
-          </div>
-          <div class="project-badges">
-            <span class="project-badge badge-accent">PDF Escaneados → Datos</span>
-            <span class="project-badge badge-info">Excel Avanzado</span>
-            <span class="project-badge badge-secondary">Control de Calidad de Datos</span>
-          </div>
-        </article>
-
-        <!-- COORDINACIÓN HUMANITARIA -->
-        <article class="project-card spotlight-card">
-          <div class="project-top">
-            <div class="project-header-row">
-              <span class="project-status-badge status-stable">✅ Entregado</span>
-              <h3 class="project-name">🌊 Gestión de Información Humanitaria &bull; ELC Arauca</h3>
-            </div>
-            <p class="project-desc">
-              Documentación de coordinación para la respuesta a la emergencia por inundaciones (ola invernal) del Equipo Local de Coordinación de Arauca.
-            </p>
-            <div class="project-highlights">
-              <div class="highlight-item">✓ <span><strong>Reportes de situación (SitRep)</strong> en HTML con estilo editorial unificado.</span></div>
-              <div class="highlight-item">✓ <span><strong>Consolidado de entrega de ayudas</strong> a partir de los reportes de múltiples socios.</span></div>
-              <div class="highlight-item">✓ <span><strong>Integración multiagencia:</strong> OIM, ACNUR, PMA, NRC, Save the Children y otros.</span></div>
-            </div>
-          </div>
-          <div class="project-badges">
-            <span class="project-badge badge-accent">Gestión de Información</span>
-            <span class="project-badge badge-info">Coordinación Multiagencia</span>
-            <span class="project-badge badge-secondary">HTML / Reporting</span>
-          </div>
-        </article>
-
-        <!-- CONTRATACIÓN PÚBLICA -->
+        <!-- ANÁLISIS DE DATOS (GENERAL) -->
         <article class="project-card spotlight-card">
           <div class="project-top">
             <div class="project-header-row">
               <span class="project-status-badge status-stable">✅ Experiencia aplicada</span>
-              <h3 class="project-name">⚖️ Análisis de Contratación Pública</h3>
+              <h3 class="project-name">📊 Análisis y Gestión de Datos</h3>
             </div>
             <p class="project-desc">
-              Análisis de procesos de compra pública en SECOP II para operadores logísticos y de catering: requisitos habilitantes, estructuras de participación e indicadores financieros.
+              Recolección, depuración, consolidación y visualización de datos para organizaciones humanitarias, entidades públicas y empresas en Colombia: desde formularios de campo hasta informes técnicos y tableros.
             </p>
             <div class="project-highlights">
-              <div class="highlight-item">✓ <span><strong>Procesos de gran escala:</strong> análisis de un proceso de Prosperidad Social de ~5.600 millones COP.</span></div>
-              <div class="highlight-item">✓ <span><strong>Presupuestación logística:</strong> evento de 3.000 asistentes con presupuesto de 170 millones COP.</span></div>
-              <div class="highlight-item">✓ <span><strong>Marco normativo:</strong> Ley 80 de 1993 y Decreto 1082 de 2015.</span></div>
+              <div class="highlight-item">✓ <span><strong>Datos de campo:</strong> recolección y gestión con KoBo Toolbox y PRIMES; tableros en Power BI.</span></div>
+              <div class="highlight-item">✓ <span><strong>Automatización:</strong> extracción de documentos escaneados a bases estructuradas y generación de reportes.</span></div>
+              <div class="highlight-item">✓ <span><strong>Análisis aplicado:</strong> reportes de situación, consolidados multiagencia y análisis de procesos de contratación pública.</span></div>
             </div>
           </div>
           <div class="project-badges">
-            <span class="project-badge badge-accent">SECOP II</span>
-            <span class="project-badge badge-info">Análisis Financiero</span>
-            <span class="project-badge badge-secondary">Informes Técnicos</span>
+            <span class="project-badge badge-accent">Power BI</span>
+            <span class="project-badge badge-info">KoBo Toolbox</span>
+            <span class="project-badge badge-secondary">Excel Avanzado</span>
           </div>
         </article>
-
         <!-- CÍCLOPE -->
         <article class="project-card spotlight-card">
           <div class="project-top">
@@ -701,50 +725,6 @@
             </ul>
           </div>
         </div>
-
-        <!-- ITEM 4: INVER7 -->
-        <div class="timeline-item">
-          <div class="timeline-dot">🧾</div>
-          <div class="timeline-content spotlight-card">
-            <div class="exp-header">
-              <span class="exp-role">Consultor de Datos, Contratación y Operaciones</span>
-              <span class="exp-company">— INVER7 SAS (Grupo Empresarial)</span>
-            </div>
-            <p class="exp-dates">Catering &amp; Eventos &bull; Colombia</p>
-
-            <p class="exp-intro">
-              Consultoría administrativa y de datos para una empresa de catering y eventos que atiende entidades como Ecopetrol, Prosperidad Social, SENA, gobernaciones y universidades.
-            </p>
-
-            <ul class="exp-list">
-              <li>Construcción del cotizador web interno con clientes, historial y lógica tributaria colombiana.</li>
-              <li>Análisis de procesos en SECOP II (requisitos habilitantes, estructuras de participación y umbrales financieros).</li>
-              <li>Presupuestación logística de eventos de gran formato y análisis comparativo de proveedores.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- ITEM 5: HUMANITARIO -->
-        <div class="timeline-item">
-          <div class="timeline-dot">🌍</div>
-          <div class="timeline-content spotlight-card">
-            <div class="exp-header">
-              <span class="exp-role">Coordinación Humanitaria &amp; Gestión de Información</span>
-              <span class="exp-company">— Arauca, Colombia</span>
-            </div>
-            <p class="exp-dates">Trabajo de campo &bull; Población refugiada, migrante y afectada por el conflicto</p>
-
-            <p class="exp-intro">
-              Roles de coordinación en terreno y manejo de datos para la respuesta humanitaria en Arauca, en articulación con agencias del sistema de Naciones Unidas y ONG internacionales.
-            </p>
-
-            <ul class="exp-list">
-              <li>Recolección y gestión de datos con KoBo Toolbox y PRIMES; visualización en Power BI.</li>
-              <li>Elaboración de reportes de situación y consolidados de entrega de ayudas para el ELC Arauca.</li>
-              <li>Articulación con organizaciones comunitarias y grupos cívicos locales.</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -772,11 +752,13 @@
         <div class="stack-pill">🧪 Automated Testing (68 Tests / 2.944 Asserts)</div>
         <div class="stack-pill">☁️ Vercel Edge &amp; Cloudflare</div>
         <div class="stack-pill">🌐 Canvas 3D &amp; Multi-Agent AI</div>
+        <div class="stack-pill">📱 Capacitor (Android) &amp; Electron (Windows)</div>
+        <div class="stack-pill">🕹️ Phaser 3 &amp; PWA Offline</div>
+        <div class="stack-pill">🔁 GitHub Actions &amp; Playwright QA Visual</div>
+        <div class="stack-pill">🎙️ ElevenLabs, Web Speech &amp; Web Audio API</div>
         <div class="stack-pill">📊 Power BI &amp; Excel Avanzado</div>
         <div class="stack-pill">📋 KoBo Toolbox &amp; PRIMES</div>
         <div class="stack-pill">🗺️ GIS &amp; DANE MGN</div>
-        <div class="stack-pill">⚖️ SECOP II &bull; Ley 80 &bull; Decreto 1082</div>
-        <div class="stack-pill">📄 ReportLab &amp; Automatización Documental</div>
       </div>
     </section>
   </main>

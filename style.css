@@ -1520,3 +1520,9 @@ main > section,
 .impact .project-desc {
   font-size: var(--text-sm);
 }
+
+.impact-note {
+  margin-top: var(--space-xl);
+  max-width: 80ch;
+  font-size: var(--text-sm);
+}

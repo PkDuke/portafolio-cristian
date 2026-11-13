@@ -25,12 +25,14 @@ Portafolio web minimalista y de alto rendimiento de **Cristian Villota Vega**, L
    - Shaders personalizados en GLSL y WGSL.
    - Bucle de renderizado sin recolección de basura (Zero-GC loop).
 
-4. **Datos, Territorio & Impacto** (nueva sección)
+4. **Juegos Educativos para Niños** (web, Android y Windows)
+   - **Mundo Pequeño** — más de 25 juegos para 2 a 4 años; PWA offline + Capacitor, QA visual con Playwright.
+   - **Lumbrera** — historias bíblicas interactivas para 8 a 12 años; TypeScript, Phaser, ElevenLabs.
+   - **El Gran Reto Bíblico** — concurso de 15 preguntas; React + Capacitor + Electron.
+
+5. **Datos & Territorio**
    - **ATLAS Arauca** — observatorio agrícola territorial sobre DANE MGN 2025 (en construcción).
-   - **INVER7 Cotizador Web** — cotizador para catering y eventos con lógica tributaria colombiana.
-   - **Auditoría Documental Asistida por IA** — PDF escaneados de asistencias técnicas → consolidados Excel.
-   - **Gestión de Información Humanitaria (ELC Arauca)** — SitReps y consolidados multiagencia.
-   - **Análisis de Contratación Pública** — SECOP II, Ley 80, Decreto 1082.
+   - **Análisis y Gestión de Datos** — KoBo Toolbox, PRIMES, Power BI y automatización de reportes.
    - **Cíclope** — aprendizaje personalizado con IA para K-12 (MVP).
 
 ---
