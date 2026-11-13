@@ -1504,3 +1504,19 @@ main > section,
     display: none;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   DATOS, TERRITORIO & IMPACTO
+   ═══════════════════════════════════════════════════════════════ */
+.impact {
+  padding-top: var(--space-2xl);
+}
+
+.impact .highlight-item {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+.impact .project-desc {
+  font-size: var(--text-sm);
+}
