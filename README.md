@@ -38,6 +38,16 @@ Portafolio web minimalista y de alto rendimiento de **Cristian Villota Vega**, L
 
 ---
 
+## 🎨 Diseño y estructura (rediseño 2026)
+
+- **Bilingüe ES / EN**: el español vive en `index.html`; el inglés en `i18n.js` (cada clave coincide con un atributo `data-i18n`). El idioma se detecta por navegador, se puede forzar con `?lang=en` o `?lang=es` y se recuerda.
+- **Tema claro y oscuro**: sigue al sistema y se puede cambiar con el botón del encabezado. Todos los colores son tokens en `style.css`.
+- **Sin dependencias ni build**: `index.html`, `style.css`, `main.js`, `i18n.js`.
+- **Rendimiento**: fuentes variables autoalojadas en `assets/fonts/` e imágenes WebP en `assets/img/` (los originales siguen en `assets/`).
+- **Boceto de la portada**: planta de salón en Canvas 2D que solo dibuja cuando algo cambia (0 FPS en reposo).
+
+---
+
 ## 🛠️ Cómo Probar Localmente
 
 Puedes abrir directamente `index.html` en cualquier navegador moderno, o servirlo con cualquier servidor local:
