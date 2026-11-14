@@ -1,367 +1,319 @@
 /**
- * Cristian Villota Vega — Portfolio Interactive Script
- * High-performance, zero-bloat micro-interactions & 3D background
+ * Cristian Villota Vega — Portafolio
+ * Sin dependencias: idioma ES/EN, tema, menú, lightbox, copiar correo
+ * y un boceto de planta 3D que solo dibuja cuando algo cambia.
  */
+(() => {
+  const root = document.documentElement;
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch { /* sin almacenamiento */ } },
+  };
 
-document.addEventListener('DOMContentLoaded', () => {
-  // 1. Mobile Menu Toggle
-  const menuBtn = document.getElementById('mobileMenuBtn');
-  const navLinks = document.querySelector('.nav-links');
+  /* ---------- 1. Idioma ---------- */
+  const EN = window.I18N_EN || {};
+  const ES = {}; // se llena con el HTML original la primera vez
+  const META_ES = { title: document.title, desc: $('meta[name="description"]').content };
+  let lang = 'es';
 
-  if (menuBtn && navLinks) {
-    menuBtn.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('nav-open');
-      menuBtn.setAttribute('aria-expanded', isOpen);
-      menuBtn.innerHTML = isOpen
-        ? `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`
-        : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+  function applyLang(next, { persist = false } = {}) {
+    lang = next === 'en' ? 'en' : 'es';
+    $$('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (!(key in ES)) ES[key] = el.innerHTML;
+      const value = lang === 'en' ? EN[key] : ES[key];
+      if (value != null) el.innerHTML = value;
     });
-
-    // Close menu when clicking any nav link
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('nav-open');
-        menuBtn.setAttribute('aria-expanded', 'false');
-        menuBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+    $$('[data-i18n-attr]').forEach(el => {
+      el.dataset.i18nAttr.split(';').forEach(pair => {
+        const [attr, key] = pair.split(':');
+        const id = `@${attr}:${key}`;
+        if (!(id in ES)) ES[id] = el.getAttribute(attr);
+        const value = lang === 'en' ? EN[key] : ES[id];
+        if (value != null) el.setAttribute(attr, value);
       });
     });
+    root.lang = lang === 'en' ? 'en' : 'es-CO';
+    document.title = lang === 'en' ? EN['meta.title'] : META_ES.title;
+    $('meta[name="description"]').content = lang === 'en' ? EN['meta.desc'] : META_ES.desc;
+    $$('.lang-switch button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    root.removeAttribute('data-i18n-pending');
+
+    if (persist) {
+      store.set('lang', lang);
+      const url = new URL(location.href);
+      url.searchParams.set('lang', lang);
+      history.replaceState(null, '', url);
+    }
   }
 
-  // 2. Mouse Spotlight on Interactive Cards
-  const cards = document.querySelectorAll('.spotlight-card');
-  cards.forEach(card => {
-    card.addEventListener('pointermove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.setProperty('--mouse-x', `${x}px`);
-      card.style.setProperty('--mouse-y', `${y}px`);
-    });
+  applyLang(root.lang.startsWith('en') ? 'en' : 'es');
+  $$('.lang-switch button').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang, { persist: true })));
+
+  /* ---------- 2. Tema ---------- */
+  const redrawHooks = [];
+  $('#themeBtn').addEventListener('click', () => {
+    const current = root.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    const swap = () => { root.dataset.theme = next; store.set('theme', next); redrawHooks.forEach(fn => fn()); };
+    if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(swap);
+    else swap();
   });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => redrawHooks.forEach(fn => fn()));
 
-  // 3. Image Lightbox for High-Res Screenshots
-  const lightbox = document.getElementById('imageLightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
-  const lightboxCaption = document.getElementById('lightboxCaption');
-  const lightboxClose = document.getElementById('lightboxClose');
+  /* ---------- 3. Menú móvil ---------- */
+  const menuBtn = $('#menuBtn');
+  const navLinks = $('#navLinks');
+  const setMenu = open => {
+    navLinks.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+  };
+  menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
+  navLinks.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 
-  document.querySelectorAll('.zoomable-image').forEach(img => {
-    img.addEventListener('click', () => {
-      if (lightbox && lightboxImg) {
-        lightboxImg.src = img.getAttribute('data-full') || img.src;
-        lightboxImg.alt = img.alt || 'Vista previa ampliada';
-        if (lightboxCaption) {
-          lightboxCaption.textContent = img.alt || '';
-        }
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-    });
-  });
-
-  if (lightboxClose && lightbox) {
-    const closeLightbox = () => {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    };
-
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) closeLightbox();
-    });
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-        closeLightbox();
-      }
-    });
-  }
-
-  // 4. Copy Email with Toast Feedback
-  const copyBtn = document.getElementById('copyEmailBtn');
-  const toast = document.getElementById('toastNotification');
-
-  if (copyBtn) {
-    copyBtn.addEventListener('click', async () => {
-      const email = copyBtn.getAttribute('data-email') || 'cfvv88@gmail.com';
-      try {
-        await navigator.clipboard.writeText(email);
-        showToast('✓ Correo copiado al portapapeles');
-      } catch {
-        showToast(`Correo: ${email}`);
-      }
-    });
-  }
-
+  /* ---------- 4. Copiar correo ---------- */
+  const toast = $('#toast');
+  let toastTimer;
   function showToast(message) {
-    if (!toast) return;
     toast.textContent = message;
     toast.classList.add('show');
-    clearTimeout(window._toastTimeout);
-    window._toastTimeout = setTimeout(() => {
-      toast.classList.remove('show');
-    }, 2800);
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
   }
-
-  // 5. High-Performance Geometric Background Canvas
-  initHeroCanvas();
-
-  // 6. Mini Galleries / Project Sliders with autoplay and arrows
-  initProjectSliders();
-});
-
-/**
- * Mini Galleries / Project Sliders (Autoplay, arrows, dots, touch swipe)
- */
-function initProjectSliders() {
-  const sliders = document.querySelectorAll('.project-slider');
-
-  sliders.forEach(slider => {
-    const slides = slider.querySelectorAll('.slider-slide');
-    const dotsContainer = slider.querySelector('.slider-dots');
-    const prevBtn = slider.querySelector('.slider-arrow.prev');
-    const nextBtn = slider.querySelector('.slider-arrow.next');
-
-    if (slides.length <= 1) return;
-
-    let currentIndex = 0;
-    let autoplayTimer = null;
-    const interval = parseInt(slider.getAttribute('data-interval') || '4200', 10);
-
-    // Create dots
-    if (dotsContainer) {
-      dotsContainer.innerHTML = '';
-      slides.forEach((_, idx) => {
-        const dot = document.createElement('button');
-        dot.className = `slider-dot ${idx === 0 ? 'active' : ''}`;
-        dot.setAttribute('aria-label', `Ir a imagen ${idx + 1}`);
-        dot.addEventListener('click', (e) => {
-          e.stopPropagation();
-          goToSlide(idx);
-          resetAutoplay();
-        });
-        dotsContainer.appendChild(dot);
-      });
+  $$('[data-copy-email]').forEach(btn => btn.addEventListener('click', async () => {
+    const email = btn.dataset.copyEmail;
+    try {
+      await navigator.clipboard.writeText(email);
+      showToast(lang === 'en' ? 'Email copied to clipboard' : 'Correo copiado al portapapeles');
+    } catch {
+      showToast(email);
     }
+  }));
 
-    const updateDots = () => {
-      if (!dotsContainer) return;
-      const dots = dotsContainer.querySelectorAll('.slider-dot');
-      dots.forEach((dot, idx) => {
-        dot.classList.toggle('active', idx === currentIndex);
-      });
-    };
+  /* ---------- 5. Lightbox (por galería, con teclado) ---------- */
+  const lb = $('#lightbox');
+  const lbImg = $('#lbImg');
+  const lbCap = $('#lbCap');
+  const lbCount = $('#lbCount');
+  let lbSet = [];
+  let lbIndex = 0;
 
-    const goToSlide = (newIndex) => {
-      slides[currentIndex].classList.remove('active');
-      currentIndex = (newIndex + slides.length) % slides.length;
-      slides[currentIndex].classList.add('active');
-      updateDots();
-    };
-
-    if (prevBtn) {
-      prevBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        goToSlide(currentIndex - 1);
-        resetAutoplay();
-      });
-    }
-
-    if (nextBtn) {
-      nextBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        goToSlide(currentIndex + 1);
-        resetAutoplay();
-      });
-    }
-
-    // Touch Swipe for mobile
-    let touchStartX = 0;
-    slider.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    slider.addEventListener('touchend', (e) => {
-      const diff = touchStartX - e.changedTouches[0].screenX;
-      if (Math.abs(diff) > 40) {
-        if (diff > 0) goToSlide(currentIndex + 1);
-        else goToSlide(currentIndex - 1);
-        resetAutoplay();
-      }
-    }, { passive: true });
-
-    // Autoplay
-    const startAutoplay = () => {
-      if (autoplayTimer) clearInterval(autoplayTimer);
-      autoplayTimer = setInterval(() => {
-        goToSlide(currentIndex + 1);
-      }, interval);
-    };
-
-    const stopAutoplay = () => {
-      if (autoplayTimer) {
-        clearInterval(autoplayTimer);
-        autoplayTimer = null;
-      }
-    };
-
-    const resetAutoplay = () => {
-      stopAutoplay();
-      startAutoplay();
-    };
-
-    slider.addEventListener('mouseenter', stopAutoplay);
-    slider.addEventListener('mouseleave', startAutoplay);
-
-    startAutoplay();
+  function showShot(i) {
+    lbIndex = (i + lbSet.length) % lbSet.length;
+    const img = lbSet[lbIndex];
+    lbImg.src = img.currentSrc || img.src;
+    lbImg.alt = img.alt;
+    lbCap.textContent = img.alt;
+    lbCount.textContent = `${lbIndex + 1} / ${lbSet.length}`;
+  }
+  $$('[data-gallery]').forEach(gallery => {
+    const imgs = $$('img', gallery);
+    $$('.shot', gallery).forEach((shot, i) => shot.addEventListener('click', () => {
+      lbSet = imgs;
+      showShot(i);
+      lb.showModal();
+    }));
   });
-}
-
-/**
- * Procedural 3D Constellation / Polyhedron Wireframe
- * Optimized zero-alloc render loop; auto-pauses when offscreen
- */
-function initHeroCanvas() {
-  const canvas = document.getElementById('heroCanvas');
-  if (!canvas) return;
-
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
-
-  let width = (canvas.width = canvas.offsetWidth * window.devicePixelRatio);
-  let height = (canvas.height = canvas.offsetHeight * window.devicePixelRatio);
-
-  let mouseX = width / 2;
-  let mouseY = height / 2;
-  let targetMouseX = mouseX;
-  let targetMouseY = mouseY;
-  let isVisible = true;
-
-  // Window resize handler
-  const onResize = () => {
-    width = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-    height = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
-  };
-  window.addEventListener('resize', onResize);
-
-  // Mouse move tracking
-  window.addEventListener('pointermove', e => {
-    const rect = canvas.getBoundingClientRect();
-    if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
-      targetMouseX = (e.clientX - rect.left) * window.devicePixelRatio;
-      targetMouseY = (e.clientY - rect.top) * window.devicePixelRatio;
-    }
+  lb.addEventListener('click', e => {
+    const action = e.target.closest('[data-lb]')?.dataset.lb;
+    if (action === 'prev') showShot(lbIndex - 1);
+    else if (action === 'next') showShot(lbIndex + 1);
+    else if (action === 'close' || e.target === lb) lb.close();
+  });
+  lb.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') showShot(lbIndex - 1);
+    if (e.key === 'ArrowRight') showShot(lbIndex + 1);
   });
 
-  // Pause when offscreen
-  const observer = new IntersectionObserver(entries => {
-    isVisible = entries[0].isIntersecting;
-  }, { threshold: 0.05 });
-  observer.observe(canvas);
+  /* ---------- 6. Boceto de planta: render bajo demanda ---------- */
+  initVenue();
 
-  // 3D Nodes Simulation
-  const NODE_COUNT = 36;
-  const nodes = [];
+  function initVenue() {
+    const canvas = $('#venue');
+    const ctx = canvas?.getContext('2d');
+    if (!ctx) return;
+    const hud = $('#hud');
+    const hudFps = $('#hudFps');
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  for (let i = 0; i < NODE_COUNT; i++) {
-    nodes.push({
-      x: (Math.random() - 0.5) * 480,
-      y: (Math.random() - 0.5) * 480,
-      z: (Math.random() - 0.5) * 480,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      vz: (Math.random() - 0.5) * 0.4,
-    });
-  }
+    // Escena en metros: salón de 24 × 16 m, 20 mesas redondas de 8 puestos y un escenario.
+    const HALL = { w: 24, d: 16 };
+    const tables = [];
+    for (let r = 0; r < 4; r++) for (let c = 0; c < 5; c++) tables.push({ x: -9.6 + c * 3.5, z: -5.4 + r * 3.6 });
+    const STAGE = { x0: 7.2, x1: 11, z0: -4.5, z1: 4.5, h: 0.8 };
+    const ELEV = 0.6; // elevación de cámara en radianes
+    const SIN_E = Math.sin(ELEV);
+    const COS_E = Math.cos(ELEV);
+    const TAU = Math.PI * 2;
 
-  let angleX = 0;
-  let angleY = 0;
+    let w = 0, h = 0, dpr = 1, scale = 1;
+    let yaw = reduced ? 0.62 : 0.15;
+    let targetYaw = 0.62;
+    let hover = -1;
+    let pointer = null;
+    let running = false;
+    let frames = 0, fpsT0 = 0;
+    let colors = {};
 
-  function render() {
-    if (isVisible) {
-      // Lerp mouse
-      mouseX += (targetMouseX - mouseX) * 0.05;
-      mouseY += (targetMouseY - mouseY) * 0.05;
+    function readColors() {
+      const cs = getComputedStyle(root);
+      colors = ['ink', 'muted', 'line', 'accent', 'accent-wash', 'surface'].reduce((o, k) => (o[k] = cs.getPropertyValue(`--${k}`).trim(), o), {});
+    }
 
-      angleX += 0.002 + (mouseY - height / 2) * 0.000003;
-      angleY += 0.003 + (mouseX - width / 2) * 0.000003;
+    let cosY = 1, sinY = 0;
+    const px = (x, z) => w / 2 + (x * cosY - z * sinY) * scale;
+    const py = (x, y, z) => h * 0.54 + ((x * sinY + z * cosY) * SIN_E - y * COS_E) * scale;
 
-      ctx.clearRect(0, 0, width, height);
+    function ring(cx, cz, y, radius, segments) {
+      ctx.moveTo(px(cx + radius, cz), py(cx + radius, y, cz));
+      for (let i = 1; i <= segments; i++) {
+        const a = (i / segments) * TAU;
+        const x = cx + Math.cos(a) * radius, z = cz + Math.sin(a) * radius;
+        ctx.lineTo(px(x, z), py(x, y, z));
+      }
+    }
+    function line(x0, y0, z0, x1, y1, z1) {
+      ctx.moveTo(px(x0, z0), py(x0, y0, z0));
+      ctx.lineTo(px(x1, z1), py(x1, y1, z1));
+    }
+    function quad(x0, z0, x1, z1, y) {
+      ctx.moveTo(px(x0, z0), py(x0, y, z0));
+      ctx.lineTo(px(x1, z0), py(x1, y, z0));
+      ctx.lineTo(px(x1, z1), py(x1, y, z1));
+      ctx.lineTo(px(x0, z1), py(x0, y, z1));
+      ctx.closePath();
+    }
+    function dimension(x0, z0, x1, z1, label) {
+      ctx.beginPath();
+      line(x0, 0, z0, x1, 0, z1);
+      const tx = x0 === x1 ? 0.35 : 0, tz = x0 === x1 ? 0 : 0.35;
+      line(x0 - tx, 0, z0 - tz, x0 + tx, 0, z0 + tz);
+      line(x1 - tx, 0, z1 - tz, x1 + tx, 0, z1 + tz);
+      ctx.stroke();
+      const mx = (x0 + x1) / 2, mz = (z0 + z1) / 2;
+      const lw = ctx.measureText(label).width + 10;
+      ctx.fillStyle = colors.surface;
+      ctx.fillRect(px(mx, mz) - lw / 2, py(mx, 0, mz) - 8, lw, 16);
+      ctx.fillStyle = colors.accent;
+      ctx.fillText(label, px(mx, mz), py(mx, 0, mz));
+    }
 
-      const fov = 340;
-      const centerX = width / 2;
-      const centerY = height / 2;
+    function draw() {
+      cosY = Math.cos(yaw); sinY = Math.sin(yaw);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, w, h);
+      ctx.lineJoin = 'round';
+      const hw = HALL.w / 2, hd = HALL.d / 2;
 
-      const cosX = Math.cos(angleX);
-      const sinX = Math.sin(angleX);
-      const cosY = Math.cos(angleY);
-      const sinY = Math.sin(angleY);
+      // Piso y retícula de 2 m
+      ctx.beginPath(); quad(-hw, -hd, hw, hd, 0);
+      ctx.fillStyle = colors.surface; ctx.fill();
+      ctx.beginPath();
+      for (let x = -hw + 2; x < hw; x += 2) line(x, 0, -hd, x, 0, hd);
+      for (let z = -hd + 2; z < hd; z += 2) line(-hw, 0, z, hw, 0, z);
+      ctx.strokeStyle = colors.line; ctx.lineWidth = 0.6; ctx.stroke();
+      ctx.beginPath(); quad(-hw, -hd, hw, hd, 0);
+      ctx.strokeStyle = colors.ink; ctx.lineWidth = 1.4; ctx.stroke();
 
-      // Projected points
-      const projected = [];
+      // Escenario (caja alámbrica)
+      const s = STAGE;
+      ctx.beginPath(); quad(s.x0, s.z0, s.x1, s.z1, s.h);
+      ctx.fillStyle = colors['accent-wash']; ctx.fill();
+      ctx.beginPath();
+      quad(s.x0, s.z0, s.x1, s.z1, 0); quad(s.x0, s.z0, s.x1, s.z1, s.h);
+      line(s.x0, 0, s.z0, s.x0, s.h, s.z0); line(s.x1, 0, s.z0, s.x1, s.h, s.z0);
+      line(s.x1, 0, s.z1, s.x1, s.h, s.z1); line(s.x0, 0, s.z1, s.x0, s.h, s.z1);
+      ctx.strokeStyle = colors.accent; ctx.lineWidth = 1.2; ctx.stroke();
 
-      for (let i = 0; i < NODE_COUNT; i++) {
-        const n = nodes[i];
-        n.x += n.vx;
-        n.y += n.vy;
-        n.z += n.vz;
-
-        // Bounce inside bounding sphere
-        if (Math.abs(n.x) > 240) n.vx *= -1;
-        if (Math.abs(n.y) > 240) n.vy *= -1;
-        if (Math.abs(n.z) > 240) n.vz *= -1;
-
-        // 3D rotation
-        let x1 = cosY * n.x + sinY * n.z;
-        let z1 = -sinY * n.x + cosY * n.z;
-        let y1 = cosX * n.y - sinX * z1;
-        let z2 = sinX * n.y + cosX * z1 + 400;
-
-        const scale = fov / z2;
-        projected.push({
-          x: centerX + x1 * scale,
-          y: centerY + y1 * scale,
-          scale: Math.max(0.1, scale),
-          z: z2,
+      // Mesas y sillas (la mesa bajo el cursor se resalta)
+      if (pointer) {
+        let best = 28 * 28; hover = -1;
+        tables.forEach((tb, i) => {
+          const dx = px(tb.x, tb.z) - pointer.x, dy = py(tb.x, 0.75, tb.z) - pointer.y;
+          if (dx * dx + dy * dy < best) { best = dx * dx + dy * dy; hover = i; }
         });
-      }
+      } else hover = -1;
 
-      // Draw lines between nearby nodes
-      for (let i = 0; i < NODE_COUNT; i++) {
-        for (let j = i + 1; j < NODE_COUNT; j++) {
-          const p1 = projected[i];
-          const p2 = projected[j];
-          const dx = p1.x - p2.x;
-          const dy = p1.y - p2.y;
-          const distSq = dx * dx + dy * dy;
-
-          if (distSq < 13000) {
-            const alpha = (1 - distSq / 13000) * 0.28;
-            ctx.strokeStyle = `rgba(56, 189, 248, ${alpha})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      // Draw node points
-      for (let i = 0; i < NODE_COUNT; i++) {
-        const p = projected[i];
-        const radius = Math.max(1.2, p.scale * 2.2);
-        ctx.fillStyle = 'rgba(56, 189, 248, 0.75)';
-        ctx.shadowColor = '#38bdf8';
-        ctx.shadowBlur = 8;
+      tables.forEach((tb, i) => {
+        const on = i === hover;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
-        ctx.fill();
+        for (let k = 0; k < 8; k++) {
+          const a = (k / 8) * TAU + 0.39;
+          ring(tb.x + Math.cos(a) * 1.3, tb.z + Math.sin(a) * 1.3, 0.45, 0.24, 6);
+        }
+        ctx.strokeStyle = on ? colors.accent : colors.muted; ctx.lineWidth = 0.9; ctx.stroke();
+        ctx.beginPath(); ring(tb.x, tb.z, 0.75, 0.9, 22);
+        ctx.fillStyle = on ? colors.accent : colors.surface; ctx.fill();
+        ctx.strokeStyle = on ? colors.accent : colors.ink; ctx.lineWidth = 1.2; ctx.stroke();
+      });
+
+      // Cotas
+      ctx.font = '500 11px "Geist Mono", ui-monospace, monospace';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.strokeStyle = colors.accent; ctx.lineWidth = 1;
+      dimension(-hw, hd + 1.4, hw, hd + 1.4, '24.0 m');
+      dimension(-hw - 1.4, -hd, -hw - 1.4, hd, '16.0 m');
+
+      if (hover >= 0) {
+        const tb = tables[hover];
+        const label = `M-${String(hover + 1).padStart(2, '0')} · 8 pax`;
+        const lx = px(tb.x, tb.z), ly = py(tb.x, 0.75, tb.z) - 0.9 * scale - 10;
+        const lw = ctx.measureText(label).width + 14;
+        ctx.fillStyle = colors.ink; ctx.beginPath(); ctx.roundRect(lx - lw / 2, ly - 10, lw, 20, 4); ctx.fill();
+        ctx.fillStyle = colors.surface; ctx.fillText(label, lx, ly);
       }
-      ctx.shadowBlur = 0;
     }
 
-    requestAnimationFrame(render);
-  }
+    function setActive(on) {
+      hud.classList.toggle('is-active', on);
+      if (!on) hudFps.textContent = '0';
+    }
 
-  requestAnimationFrame(render);
-}
+    let lastHover = -1;
+    function frame(now) {
+      yaw += (targetYaw - yaw) * 0.085;
+      draw();
+      frames++;
+      if (now - fpsT0 >= 400) { hudFps.textContent = Math.round((frames * 1000) / (now - fpsT0)); frames = 0; fpsT0 = now; }
+      const settled = Math.abs(targetYaw - yaw) < 0.0008 && hover === lastHover;
+      lastHover = hover;
+      if (settled) { yaw = targetYaw; draw(); running = false; setActive(false); return; }
+      requestAnimationFrame(frame);
+    }
+    // Único punto de entrada al bucle: si nada cambia, no hay frames.
+    function invalidate() {
+      if (reduced) { yaw = targetYaw; draw(); return; }
+      if (running) return;
+      running = true; frames = 0; fpsT0 = performance.now(); setActive(true);
+      requestAnimationFrame(frame);
+    }
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      if (!rect.width) return;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = rect.width; h = rect.height;
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+      scale = Math.min(w / 34, h / 23);
+      draw();
+    }
+
+    canvas.addEventListener('pointermove', e => {
+      const rect = canvas.getBoundingClientRect();
+      pointer = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+      targetYaw = 0.62 + (pointer.x / rect.width - 0.5) * 1.5;
+      invalidate();
+    });
+    canvas.addEventListener('pointerleave', () => { pointer = null; targetYaw = 0.62; invalidate(); });
+
+    readColors();
+    new ResizeObserver(resize).observe(canvas);
+    resize();
+    redrawHooks.push(() => { readColors(); draw(); });
+    document.fonts?.ready.then(draw);
+    invalidate(); // giro de entrada; luego queda en 0 FPS
+  }
+})();
